@@ -1,11 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="/dist/index.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <section id="topbar" class="rounded">
+        <form>
+          <input type="text" id="url" class="rounded" placeholder="https://" />
+          <select id="http-method" class="rounded">
+            <option value="get">GET</option>
+            <option value="post">POST</option>
+            <option value="put">PUT</option>
+            <option value="patch">PATCH</option>
+            <option value="delete">DELETE</option>
+            <option value="head">HEAD</option>
+            <option value="options">OPTIONS</option>
+          </select>
+          <button type="submit" id="send" class="rounded">SEND</button>
+        </form>
+      </section>
+      <section id="request" class="rounded">
+        <div class="topbar">
+          <nav aria-label="Tab Navigation">
+            <button
+              role="tab"
+              aria-selected="true"
+              aria-controls="tab1"
+              id="tab1-btn"
+              data-active="true"
+            >
+              Headers
+            </button>
+            <button
+              role="tab"
+              aria-selected="false"
+              aria-controls="tab2"
+              id="tab2-btn"
+              data-active="false"
+            >
+              Params
+            </button>
+            <button
+              role="tab"
+              aria-selected="false"
+              aria-controls="tab3"
+              id="tab3-btn"
+              data-active="false"
+            >
+              Body
+            </button>
+          </nav>
+        </div>
+        <div
+          role="tabpanel"
+          id="tab1"
+          aria-labelledby="tab1-btn"
+          class="active"
+        >
+          <table>
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody id="headersTableBody">
+              <tr>
+                <td><input type="text" placeholder="Header Key" /></td>
+                <td><input type="text" placeholder="Header Value" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div role="tabpanel" id="tab2" aria-labelledby="tab2-btn" hidden>
+          params
+        </div>
+        <div role="tabpanel" id="tab3" aria-labelledby="tab3-btn" hidden>
+          <div class="line-index">
+            <div>1.</div>
+            <div>2.</div>
+            <div>3.</div>
+            <div>4.</div>
+            <div>5.</div>
+            <div>6.</div>
+            <div>7.</div>
+            <div>8.</div>
+            <div>9.</div>
+            <div>10.</div>
+            <div>11.</div>
+            <div>12.</div>
+          </div>
+          <textarea></textarea>
+        </div>
+      </section>
+      <section id="response" class="rounded"></section>
+    </main>
+  </body>
 </html>

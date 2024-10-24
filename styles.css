@@ -1,0 +1,142 @@
+:root {
+    --white: #ffffff;
+    --grey: #767676;
+    --purple: #917BD4;
+    --blue: #4851E7;
+    --salmon: #FEC0B5;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--salmon);
+    background: linear-gradient(140deg, var(--salmon) 40%, var(--blue) 100%);
+}
+main {
+    width: 1000px;
+    height: 700px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+section {
+    display: flex;
+    width: 100%;
+    background: var(--white);
+    padding: 10px;
+}
+section:not(:last-child) {
+    margin-bottom: 10px;
+}
+#topbar {
+    display: flex;
+    height: 60px;
+}
+#topbar > form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+#topbar > form > *:not(:last-child) {
+    margin-right: 8px;
+}
+#url {
+    width: 764px;
+    color: var(--grey);
+    border: 1px solid var(--grey);
+    padding: 8px;
+}
+#url:active, #url:focus {
+    border: 1px solid var(--purple);;
+    outline: 1px solid var(--purple);
+}
+#http-method {
+    width: 80px;
+    align-items: center;
+    color: var(--grey);
+    border: 1px solid var(--grey);
+    padding: 8px;
+}
+#http-method:active, #http-method:focus {
+    border: 1px solid var(--purple);;
+    outline: 1px solid var(--purple);
+}
+#send {
+    background: var(--purple);
+    color: var(--white);
+    width: 80px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+#request {
+    /* to be changed */
+    height: 290px;
+    flex-direction: column;
+}
+#request > .topbar{
+    height: 30px;
+    width: 100%;
+}
+button[role="tab"] {
+    background: transparent;
+    color: var(--grey);
+    padding: 4px 12px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+button[role="tab"][data-active="true"] {
+    color: var(--purple);
+    border-bottom: 2px solid var(--purple);
+}
+div[role="tabpanel"]:not([hidden]) {
+    display: flex;
+}
+div[role="tabpanel"] {
+    color: var(--grey);
+    padding: 10px;
+    /* to be changed */
+    height: 100%;
+}
+div#tab1 {
+    height: auto;
+    overflow: scroll;
+}
+div[role="tabpanel"]>.line-index {
+    height: 100%;
+    width: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 10px;
+}
+div[role="tabpanel"]>textarea {
+    border: none;
+    outline: none;
+    resize: none;
+    color: var(--grey);
+    font-size: 16px;
+    height: 100%;
+    width: 100%;
+}
+#response {
+    /* to be changed */
+    height: 290px;
+}
+
+.rounded {
+    border-radius: 8px;
+}
