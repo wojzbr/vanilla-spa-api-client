@@ -13,10 +13,9 @@
   <body>
     <main>
       <section id="topbar" class="rounded">
-        <form>
           <input type="text" id="url" class="rounded" placeholder="https://" />
           <div class="http-method custom-dropdown rounded">
-            <div class="chosen rounded">GET</div>
+            <div class="dropdown-item chosen rounded">GET</div>
             <div class="dropdown-list rounded">
               <div class="dropdown-item selected">GET</div>
               <div class="dropdown-item">POST</div>
@@ -27,7 +26,6 @@
           </div>
 
           <button type="submit" id="send" class="rounded">SEND</button>
-        </form>
       </section>
       <section id="request" class="rounded">
         <div class="topbar">
@@ -60,6 +58,15 @@
               Body
             </button>
           </nav>
+          <div class="req-body-type custom-dropdown rounded">
+            <div class="dropdown-item chosen rounded">NONE</div>
+            <div class="dropdown-list rounded">
+              <div class="dropdown-item selected">NONE</div>
+              <div class="dropdown-item">RAW</div>
+              <div class="dropdown-item">JSON</div>
+              <div class="dropdown-item">FORM-DATA</div>
+            </div>
+          </div>
         </div>
         <div role="tabpanel" id="tab1" aria-labelledby="tab1-btn">
           <table>

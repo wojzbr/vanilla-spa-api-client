@@ -38,13 +38,15 @@ section:not(:last-child) {
 }
 #topbar {
     display: flex;
+    flex-direction: row;
     height: 60px;
-}
-#topbar > form {
     width: 100%;
-    display: flex;
     justify-content: space-between;
 }
+/* #topbar > form {
+    width: 100%;
+    display: flex;
+} */
 #topbar > form > *:not(:last-child) {
     margin-right: 8px;
 }
@@ -87,6 +89,9 @@ section:not(:last-child) {
 #request > .topbar{
     height: 30px;
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 button[role="tab"] {
     background: transparent;
@@ -140,7 +145,6 @@ div[role="tabpanel"]>textarea {
 .rounded {
     border-radius: 8px;
 }
-
 .active {
     border: 2px solid var(--purple);
 }
@@ -151,29 +155,53 @@ div[role="tabpanel"]>textarea {
 .custom-dropdown {
     position: relative;
     overflow: hidden;
-    height: 40px;
-    border: 2px solid var(--purple);
     cursor: pointer;
-}
-.custom-dropdown.expanded {
-    height: 240px;
+    color: var(--grey);
+    transition: height 0.2s ease;
     background: white;
+    z-index: auto;
+}
+.http-method.custom-dropdown {
+    border: 2px solid var(--purple);
+    width: 80px;
+    height: 40px;
+}
+.http-method.custom-dropdown.expanded {
+    height: 240px;
+    z-index: 99;
 }
 .chosen {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 80px;
-    height: 40px;
 }
 .dropdown-item {
-    width: 80px;
-    height: 40px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.dropdown-item:hover, .dropdown-item.selected {
+.http-method .dropdown-item {
+    height: 40px;
+}
+.dropdown-item:hover:not(.chosen), .dropdown-item.selected {
     background: #f0f0f0;
     border-radius: 8px;
+}
+
+.req-body-type.custom-dropdown {
+    width: 100px;
+    height: 30px;
+    border: 1px solid white;
+}
+.req-body-type.custom-dropdown:hover {
+    border: 1px dashed var(--grey);
+}
+.req-body-type.custom-dropdown.expanded {
+    height: 150px;
+    z-index: 99;
+}
+.req-body-type .dropdown-item {
+    height: 30px;
 }
