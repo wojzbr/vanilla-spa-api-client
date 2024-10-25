@@ -19,15 +19,20 @@ function switchTab(event) {
 document.querySelectorAll('[role="tab"]').forEach(button => {
     button.addEventListener('click', switchTab);
 });
-
-function addHeaderRow() {
-    const tbody = document.getElementById('headersTableBody');
-    const newRow = document.createElement('tr');
-    newRow.innerHTML = `
-        <td><input type="text" placeholder="Key" /></td>
-        <td><input type="text" placeholder="Value" /></td>
-    `;
-    tbody.appendChild(newRow);
+const select = document.querySelector('.custom-dropdown');
+if (select) {
+    select.addEventListener('click', () => {
+        select.classList.toggle('expanded');
+    });
 }
-
-window.addHeaderRow = addHeaderRow;
+const dropdownItems = document.querySelectorAll('.http-method .dropdown-list .dropdown-item');
+const chosen = document.querySelector('.http-method .chosen');
+if (chosen) {
+    dropdownItems.forEach((item) => {
+        item.addEventListener('click', () => {
+            chosen.textContent = item.textContent;
+            dropdownItems.forEach(item => item.classList.remove('selected'));
+            item.classList.add('selected');
+        });
+    });
+}

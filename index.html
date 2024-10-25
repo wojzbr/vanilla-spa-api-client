@@ -15,15 +15,17 @@
       <section id="topbar" class="rounded">
         <form>
           <input type="text" id="url" class="rounded" placeholder="https://" />
-          <select id="http-method" class="rounded">
-            <option value="get">GET</option>
-            <option value="post">POST</option>
-            <option value="put">PUT</option>
-            <option value="patch">PATCH</option>
-            <option value="delete">DELETE</option>
-            <option value="head">HEAD</option>
-            <option value="options">OPTIONS</option>
-          </select>
+          <div class="http-method custom-dropdown rounded">
+            <div class="chosen rounded">GET</div>
+            <div class="dropdown-list rounded">
+              <div class="dropdown-item selected">GET</div>
+              <div class="dropdown-item">POST</div>
+              <div class="dropdown-item">PUT</div>
+              <div class="dropdown-item">PATCH</div>
+              <div class="dropdown-item">DELETE</div>
+            </div>
+          </div>
+
           <button type="submit" id="send" class="rounded">SEND</button>
         </form>
       </section>
@@ -59,12 +61,7 @@
             </button>
           </nav>
         </div>
-        <div
-          role="tabpanel"
-          id="tab1"
-          aria-labelledby="tab1-btn"
-          class="active"
-        >
+        <div role="tabpanel" id="tab1" aria-labelledby="tab1-btn">
           <table>
             <thead>
               <tr>

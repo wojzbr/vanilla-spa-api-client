@@ -22,3 +22,26 @@ function switchTab(event: Event): void {
 document.querySelectorAll<HTMLButtonElement>('[role="tab"]').forEach(button => {
     button.addEventListener('click', switchTab);
 });
+
+
+const select = document.querySelector<HTMLDivElement>('.custom-dropdown');
+
+if (select) {
+    select.addEventListener('click', () => {
+        select.classList.toggle('expanded');
+  });
+}
+
+const dropdownItems = document.querySelectorAll<HTMLDivElement>('.http-method .dropdown-list .dropdown-item');
+const chosen = document.querySelector<HTMLDivElement>('.http-method .chosen');
+
+if (chosen) {
+  dropdownItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      chosen.textContent = item.textContent;
+      dropdownItems.forEach(item => item.classList.remove('selected'))
+      item.classList.add('selected');
+    });
+  });
+}
+
