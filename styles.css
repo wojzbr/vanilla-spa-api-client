@@ -50,13 +50,13 @@ section:not(:last-child) {
 #topbar > form > *:not(:last-child) {
     margin-right: 8px;
 }
-#url {
+#req-url {
     width: 764px;
     color: var(--grey);
     border: 1px solid var(--grey);
     padding: 8px;
 }
-#url:active, #url:focus {
+#req-url:active, #req-url:focus {
     border: 1px solid var(--purple);;
     outline: 1px solid var(--purple);
 }

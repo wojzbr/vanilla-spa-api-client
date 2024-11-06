@@ -56,3 +56,61 @@ if (reqBodyTypeChosen) {
     });
   });
 }
+
+
+// SEND button
+
+document.getElementById("send")?.addEventListener("click", () => {
+  const reqUrl = document.getElementById("req-url") as HTMLInputElement;
+  const reqMethod = document.querySelector<HTMLElement>(".http-method .chosen")?.textContent || "GET";
+
+  // const reqHeaders = document.getElementById("req-headers") as HTMLTextAreaElement;
+  // const reqHeadersValue = reqHeaders.value;
+  // const reqHeadersJSON = JSON.parse(reqHeadersValue);
+
+  const reqBodyType = document.querySelector<HTMLElement>(".req-body-type .chosen")?.textContent;
+
+  // const reqBody = document.getElementById("req-body") as HTMLTextAreaElement;
+  // const reqBodyValue = reqBody.value;
+  // const reqBodyJSON = reqBodyType === "JSON" ? JSON.parse(reqBodyValue) : reqBodyValue;
+
+  let reqBody;
+
+  switch (reqBodyType) {
+    case "NONE":
+      reqBody = null;
+      break;
+    case "JSON":
+      const reqBodyJSON = document.getElementById("req-body") as HTMLTextAreaElement;
+      reqBody = JSON.stringify(JSON.parse(reqBodyJSON.value));
+      break;
+    case "RAW":
+      const reqBodyRAW = document.getElementById("req-body") as HTMLTextAreaElement;
+      reqBody = reqBodyRAW.value;
+      break;
+    case "FORM-DATA":
+      const reqBodyFormData = document.getElementById("req-body") as HTMLFormElement;
+      reqBody = new FormData(reqBodyFormData);
+      break;
+    default:
+      reqBody = null;
+      break;
+  }
+
+  console.log(reqBody)
+
+  fetch(reqUrl.value, {
+    method: reqMethod,
+    // headers: reqHeadersJSON,
+    body: reqBody,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // const resBody = document.getElementById("res-body") as HTMLTextAreaElement;
+      const resBody = document.getElementById("response");
+      if (resBody) resBody.innerHTML = JSON.stringify(data, null, 2);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+});
