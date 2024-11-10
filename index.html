@@ -3,109 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="/dist/index.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script type="module">
+      import { registerListeners } from './dist/listeners.js';
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const modulePromises = ['topbar', 'request', 'response'].map(module =>
+          fetch(`modules/${module}.html`)
+            .then(response => response.text())
+            .then(html => {
+              document.getElementById(module).innerHTML = html;
+            })
+            .catch(error => console.log(`Error loading ${module} html module:`, error))
+        );
+
+        Promise.all(modulePromises).then(() => {
+          registerListeners();
+        });
+      });
+    </script>
+
   </head>
   <body>
     <main>
-      <section id="topbar" class="rounded">
-          <input type="text" id="req-url" class="rounded" placeholder="https://" />
-          <div class="http-method custom-dropdown rounded">
-            <div class="dropdown-item chosen rounded">GET</div>
-            <div class="dropdown-list rounded">
-              <div class="dropdown-item selected">GET</div>
-              <div class="dropdown-item">POST</div>
-              <div class="dropdown-item">PUT</div>
-              <div class="dropdown-item">PATCH</div>
-              <div class="dropdown-item">DELETE</div>
-            </div>
-          </div>
-
-          <button type="submit" id="send" class="rounded">SEND</button>
-      </section>
-      <section id="request" class="rounded">
-        <div class="topbar">
-          <nav aria-label="Tab Navigation">
-            <button
-              role="tab"
-              aria-selected="true"
-              aria-controls="tab1"
-              id="tab1-btn"
-              data-active="true"
-            >
-              Headers
-            </button>
-            <button
-              role="tab"
-              aria-selected="false"
-              aria-controls="tab2"
-              id="tab2-btn"
-              data-active="false"
-            >
-              Params
-            </button>
-            <button
-              role="tab"
-              aria-selected="false"
-              aria-controls="tab3"
-              id="tab3-btn"
-              data-active="false"
-            >
-              Body
-            </button>
-          </nav>
-          <div class="req-body-type custom-dropdown rounded">
-            <div class="dropdown-item chosen rounded">NONE</div>
-            <div class="dropdown-list rounded">
-              <div class="dropdown-item selected">NONE</div>
-              <div class="dropdown-item">RAW</div>
-              <div class="dropdown-item">JSON</div>
-              <div class="dropdown-item">FORM-DATA</div>
-            </div>
-          </div>
-        </div>
-        <div role="tabpanel" id="tab1" aria-labelledby="tab1-btn">
-          <table>
-            <thead>
-              <tr>
-                <th>Key</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody id="headersTableBody">
-              <tr>
-                <td><input type="text" placeholder="Header Key" /></td>
-                <td><input type="text" placeholder="Header Value" /></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div role="tabpanel" id="tab2" aria-labelledby="tab2-btn" hidden>
-          params
-        </div>
-        <div role="tabpanel" id="tab3" aria-labelledby="tab3-btn" hidden>
-          <div class="line-index">
-            <div>1.</div>
-            <div>2.</div>
-            <div>3.</div>
-            <div>4.</div>
-            <div>5.</div>
-            <div>6.</div>
-            <div>7.</div>
-            <div>8.</div>
-            <div>9.</div>
-            <div>10.</div>
-            <div>11.</div>
-            <div>12.</div>
-          </div>
-          <textarea id="req-body"></textarea>
-        </div>
-      </section>
+      <section id="topbar" class="rounded"></section>
+      <section id="request" class="rounded"></section>
       <section id="response" class="rounded"></section>
     </main>
+
   </body>
 </html>

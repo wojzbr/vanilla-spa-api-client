@@ -60,17 +60,6 @@ section:not(:last-child) {
     border: 1px solid var(--purple);;
     outline: 1px solid var(--purple);
 }
-/* #http-method {
-    width: 80px;
-    align-items: center;
-    color: var(--grey);
-    border: 1px solid var(--grey);
-    padding: 8px;
-}
-#http-method:active, #http-method:focus {
-    border: 1px solid var(--purple);;
-    outline: 1px solid var(--purple);
-} */
 #send {
     background: var(--purple);
     color: var(--white);

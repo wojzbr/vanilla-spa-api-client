@@ -1,0 +1,76 @@
+<div class="topbar">
+    <nav aria-label="Tab Navigation">
+      <button
+        role="tab"
+        aria-selected="true"
+        aria-controls="tab1"
+        id="tab1-btn"
+        data-active="true"
+      >
+        Headers
+      </button>
+      <button
+        role="tab"
+        aria-selected="false"
+        aria-controls="tab2"
+        id="tab2-btn"
+        data-active="false"
+      >
+        Params
+      </button>
+      <button
+        role="tab"
+        aria-selected="false"
+        aria-controls="tab3"
+        id="tab3-btn"
+        data-active="false"
+      >
+        Body
+      </button>
+    </nav>
+    <div class="req-body-type custom-dropdown rounded">
+      <div class="dropdown-item chosen rounded">NONE</div>
+      <div class="dropdown-list rounded">
+        <div class="dropdown-item selected">NONE</div>
+        <div class="dropdown-item">RAW</div>
+        <div class="dropdown-item">JSON</div>
+        <div class="dropdown-item">FORM-DATA</div>
+      </div>
+    </div>
+  </div>
+  <div role="tabpanel" id="tab1" aria-labelledby="tab1-btn">
+    <table>
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody id="headersTableBody">
+        <tr>
+          <td><input type="text" placeholder="Header Key" /></td>
+          <td><input type="text" placeholder="Header Value" /></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div role="tabpanel" id="tab2" aria-labelledby="tab2-btn" hidden>
+    params
+  </div>
+  <div role="tabpanel" id="tab3" aria-labelledby="tab3-btn" hidden>
+    <div class="line-index">
+      <div>1.</div>
+      <div>2.</div>
+      <div>3.</div>
+      <div>4.</div>
+      <div>5.</div>
+      <div>6.</div>
+      <div>7.</div>
+      <div>8.</div>
+      <div>9.</div>
+      <div>10.</div>
+      <div>11.</div>
+      <div>12.</div>
+    </div>
+    <textarea id="req-body"></textarea>
+  </div>
